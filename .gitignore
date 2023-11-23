@@ -1,4 +1,8 @@
 # This is a .gitignore file
+#files
 \#venv.bat
+resources.txt
+#folders
 venv/
 .git/
+__pycache__/

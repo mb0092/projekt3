@@ -2,6 +2,7 @@
 #files
 \#venv.bat
 resources.txt
+babka.*
 #folders
 venv/
 .git/

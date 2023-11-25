@@ -3,6 +3,7 @@
 \#venv.bat
 resources.txt
 babka.*
+*.html
 #folders
 venv/
 .git/

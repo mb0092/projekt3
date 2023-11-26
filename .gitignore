@@ -4,6 +4,7 @@
 resources.txt
 babka.*
 *.html
+*.bak
 #folders
 venv/
 .git/

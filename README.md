@@ -63,10 +63,12 @@ Election Scraper
 **POSSIBLE ERRORS**
 
 1. Missing arguments
+   
     Election Scraper
     - please run this application with arguments : python escraper.py <url> <filename>
     - terminating now...
-2. Bad URL specified or enetered without quotation marks
+3. Bad URL specified or enetered without quotation marks
+   
     Election Scraper
     - please specify the URL as "https://volby.cz/pls/ps2017nss..."
     - terminating now...

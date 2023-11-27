@@ -1,6 +1,3 @@
-Third project for ENGETO Python Academy
-Miroslav Babka
-
 **ELECTION SCRAPER**
 third project for Engeto Python Academy
 

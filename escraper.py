@@ -1,4 +1,11 @@
-""" Election Scraper """
+""" 
+Election Scraper 
+escraper.py: third project for Engeto Python Akademy
+
+author: Miroslav Babka
+email: miroslav.babka@email.cz
+discord: miro3363_98687
+"""
 import sys
 import pandas as pd
 # Functions from functions.py

@@ -13,9 +13,9 @@ EMPTY_HTML = """<!doctype html>\n<html>\n<body>\n<h3>
 Page not found!
 </h3>\n</body>\n</html>
 """
-URL_VERIFY = "https://volby.cz/pls/ps2017nss"
+URL_VERIFY = "volby.cz/pls/ps2017nss"
 EXT_VERIFY = ".csv"
-VILLAGE_URL_BASE = 'https://volby.cz/pls/ps2017nss/'
+VILLAGE_URL_BASE = 'https://www.volby.cz/pls/ps2017nss/'
 SELECTED_COLUMNS = ['ČÍSLO','OBEC','POČET VOLIČŮ','VYDANÉ OBÁLKY','PLATNÉ HLASY']
 
 # Functions
@@ -42,16 +42,16 @@ def get_villages_list(v_url: str) -> []:
     result_list = []
     # Get data from all tables on page
     for table in (v_tables):
-        for rows in table.find_all('tr'):
-            rows_data = [td.text for td in rows.find_all('td')]
-            v_link = rows.select('td[class="cislo"] a')
-            if len(rows_data):
-                if rows_data[0].isnumeric():
-                    result_list.append([rows_data[0], rows_data[1], v_link[0].get("href")])
+        for row in table.find_all('tr'):
+            row_data = [td.text for td in row.find_all('td')]
+            v_link = row.select('td[class="cislo"] a')
+            if row_data:
+                if row_data[0].isnumeric():
+                    result_list.append([row_data[0], row_data[1], v_link[0].get("href")])
     return result_list
 
 def get_village_results(v_url: str):
-    """ Function is list of headers and list of results for specific village """
+    """ Function issys.exit() list of headers and list of results for specific village """
     # Download data and select tables only
     html_soup = BeautifulSoup(get_html_data(v_url), 'html.parser')
     v_tables = html_soup.find_all('table')
@@ -79,17 +79,17 @@ def get_village_results(v_url: str):
     v_data_list = village_general_data + votes_received
     return v_headers_list, v_data_list
 
-def check_input_arguments(argv_list: []) -> bool:
+def check_input_arguments(argv_list: []):
     """ Returns true if all done well, otherwise false """
     if len(argv_list) != 3: # Check if two parameters has been given
         print("- please run this application with arguments : python escraper.py <url> <filename>")
-        return False
+        return False, None, None
     if argv_list[1].lower().find(URL_VERIFY) < 0: # Check if the URL points the correct way
-        print("- please specify the URL as \""+ URL_VERIFY + '...\"')
-        return False
+        print("- please specify the URL as \"https://"+ URL_VERIFY + "...\"")
+        return False, None, None
     print("- url to scrape:", argv_list[1])
-    print("- target csv file:", argv_list[2])
-    return True
+    print("- target csv file:", argv_list[2],"\n")
+    return True, argv_list[1], argv_list[2]
 
 def cls_print(text_to_display: str) -> None:
     """ Clear the terminal screen and print the text """

@@ -14,7 +14,7 @@ pip install --upgrade -r requirements.txt
 
 **STARTING THE PROGRAM**
 
-To run the election.py file from command line you need 2 mandatory arguments - link for specific district and name of the file (can be set with or without extension .csv):
+To run the escraper.py file from command line you need 2 mandatory arguments - link for specific district and name of the file (can be set with or without extension .csv):
 
 python escraper.py <url> <filename.csv>
 
